@@ -6,7 +6,7 @@ export default defineConfig({
   manifest: {
     name: 'Fattura Elettronica Viewer & PDF',
     description:
-      'Visualizza in un formato grafico moderno ed esporta in PDF le fatture elettroniche italiane (XML e P7M).',
+      'Visualizza e trasforma fatture elettroniche XML e P7M in documenti grafici ed esporta in PDF A4. 100% privato e offline.',
     version: '1.0.0',
     permissions: ['storage', 'contextMenus', 'tabs'],
     action: {

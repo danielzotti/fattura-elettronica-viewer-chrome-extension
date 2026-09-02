@@ -1,6 +1,6 @@
 {
   "name": "fattura-elettronica-viewer-extension",
-  "description": "Estensione browser per visualizzare graficamente ed esportare in PDF le fatture elettroniche italiane (XML e P7M).",
+  "description": "Visualizza e trasforma fatture elettroniche XML e P7M in documenti grafici ed esporta in PDF A4. 100% privato e offline.",
   "private": true,
   "version": "1.0.0",
   "type": "module",
