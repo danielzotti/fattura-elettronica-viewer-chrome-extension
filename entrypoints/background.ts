@@ -1,24 +1,29 @@
 export default defineBackground(() => {
-  chrome.runtime.onInstalled.addListener(() => {
-    // Create Context Menu Items
-    chrome.contextMenus.create({
-      id: 'open-viewer-page',
-      title: 'Apri Fattura Elettronica Viewer',
-      contexts: ['action'],
-    });
+  const registerContextMenus = () => {
+    chrome.contextMenus.removeAll(() => {
+      // Create Context Menu Items
+      chrome.contextMenus.create({
+        id: 'open-viewer-page',
+        title: 'Apri Fattura Elettronica Viewer',
+        contexts: ['action'],
+      });
 
-    chrome.contextMenus.create({
-      id: 'view-selected-xml',
-      title: 'Visualizza testo XML con Fattura Elettronica Viewer',
-      contexts: ['selection'],
-    });
+      chrome.contextMenus.create({
+        id: 'view-selected-xml',
+        title: 'Visualizza testo XML con Fattura Elettronica Viewer',
+        contexts: ['selection'],
+      });
 
-    chrome.contextMenus.create({
-      id: 'view-link-xml',
-      title: 'Apri link fattura con Fattura Elettronica Viewer',
-      contexts: ['link'],
+      chrome.contextMenus.create({
+        id: 'view-link-xml',
+        title: 'Apri link fattura con Fattura Elettronica Viewer',
+        contexts: ['link'],
+      });
     });
-  });
+  };
+
+  chrome.runtime.onInstalled.addListener(registerContextMenus);
+  chrome.runtime.onStartup.addListener(registerContextMenus);
 
   chrome.contextMenus.onClicked.addListener(async (info) => {
     const viewerUrl = chrome.runtime.getURL('/viewer.html');

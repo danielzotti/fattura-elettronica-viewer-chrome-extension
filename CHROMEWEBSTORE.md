@@ -24,6 +24,7 @@ Visualizza qualsiasi fattura elettronica italiana (XML standard o file firmato d
 - **Riepilogo Totali & IVA**: indicatori visivi per Totale Documento, Imponibile, IVA, Ritenute d'acconto, Casse Previdenziali e Bollo virtuale.
 - **Gestione Allegati**: rileva e permette di scaricare con un click gli allegati incorporati nel file XML.
 - **Rilevamento Automatico nelle Schede**: mostra una notifica discreta quando apri un file XML di fattura nel browser.
+- **Menu Contestuale Integrato**: fai click con il tasto destro su qualsiasi testo XML selezionato o su un link a una fattura per visualizzarla all'istante.
 - **Privacy al 100%**: tutti i dati e i file XML rimangono esclusivamente all'interno del tuo computer / browser. Nessun dato viene inviato a server esterni.
 
 ---

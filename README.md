@@ -36,8 +36,9 @@ You can use the viewer immediately in your browser without installing anything a
   - Dedicated **"Export PDF"** button: generates a clean, neatly formatted vector A4 PDF document.
   - Dedicated **"Print"** button: native `@media print` support with calibrated margins and contrast optimized for business documents.
 
-- ⚡ **Automatic In-Tab Detection** *(Extension Mode)*:
+- ⚡ **Automatic In-Tab Detection & Context Menus** *(Extension Mode)*:
   - When opening an `.xml` file or visiting a page containing an electronic invoice, a prompt banner appears: *"Electronic Invoice Detected — View Graphically ➔"*.
+  - **Context Menu Actions**: Right-click on selected XML text to view it graphically, right-click on any invoice link to open it directly in the viewer, or right-click the extension icon for quick launch.
 
 - 🌙 **Dark & Light Themes**:
   - Full Dark Mode support for comfortable on-screen reading, with automatic preference persistence.
@@ -144,8 +145,12 @@ L'applicativo è fruibile direttamente dal browser senza dover installare nulla 
   - Pulsante dedicato **"Esporta PDF"**: genera un file PDF A4 vettoriale impaginato e pulito.
   - Pulsante **"Stampa"**: supporto per `@media print` nativo con margini e contrasto calibrati per documenti aziendali.
 
-- ⚡ **Rilevamento Automatico nei Tab** *(Modalità Estensione)*:
+- ⚡ **Rilevamento Automatico & Menu Contestuale** *(Modalità Estensione)*:
   - Quando apri un file `.xml` o visiti una pagina contenente una fattura elettronica, compare un banner rapido: *"Fattura Elettronica Rilevata — Visualizza Graficamente ➔"*.
+  - **Menu Contestuale con Tasto Destro**:
+    - Click destro su **testo XML selezionato**: apre e renderizza all'istante il testo evidenziato nel visualizzatore grafico.
+    - Click destro su **link a fattura**: scarica e visualizza direttamente il file XML senza doverlo prima salvare sul disco.
+    - Click destro sull'**icona dell'estensione**: accesso rapido diretto al visualizzatore.
 
 - 🌙 **Tema Scuro & Chiaro**:
   - Supporto Dark Mode per una lettura confortevole a schermo, con salvataggio delle preferenze.
