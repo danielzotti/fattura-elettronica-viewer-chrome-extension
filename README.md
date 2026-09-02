@@ -42,12 +42,12 @@ You can use the viewer immediately in your browser without installing anything a
 - 🌙 **Dark & Light Themes**:
   - Full Dark Mode support for comfortable on-screen reading, with automatic preference persistence.
 
-- 📦 **Universal Format Support**:
-  - `FPR12` (B2B / B2C / Private Invoices)
-  - `FPA12` (Public Administration Invoices)
-  - `FSM10` (Simplified Invoices)
-  - Digitally signed files `.xml.p7m` / `.p7m` (automatic PKCS#7 envelope extraction)
-  - Multi-body documents (batches with multiple invoices within the same XML file)
+- 📦 **Universal Format Support (Italian & European EN 16931)**:
+  - 🇮🇹 **Italian SDI**: `FPR12` (B2B / B2C), `FPA12` (Public Administration), `FSM10` (Simplified Invoices)
+  - 🇪🇺 **OASIS UBL 2.1**: **Peppol BIS Billing 3.0**, **XRechnung UBL**, universal UBL Invoices & Credit Notes
+  - 🇪🇺 **UN/CEFACT CII**: **Factur-X / ZUGFeRD** (All EN 16931 profiles: Minimum, Basic, Comfort, Extended), **XRechnung CII**
+  - 🔒 **Digitally Signed Envelopes**: `.xml.p7m` / `.p7m` (automatic PKCS#7 / CAdES envelope extraction)
+  - 📑 **Multi-Body Documents**: Batches with multiple invoices within the same XML file
 
 ---
 
@@ -150,12 +150,12 @@ L'applicativo è fruibile direttamente dal browser senza dover installare nulla 
 - 🌙 **Tema Scuro & Chiaro**:
   - Supporto Dark Mode per una lettura confortevole a schermo, con salvataggio delle preferenze.
 
-- 📦 **Supporto Formati Universale**:
-  - `FPR12` (Fattura tra Privati / B2B / B2C)
-  - `FPA12` (Fattura verso la Pubblica Amministrazione)
-  - `FSM10` (Fattura Semplificata)
-  - File firmati digitalmente `.xml.p7m` / `.p7m` (estrazione automatica della busta crittografica PKCS#7)
-  - Multi-body (lotti con più fatture nello stesso file XML)
+- 📦 **Supporto Formati Universale (Standard Italiano ed Europeo EN 16931)**:
+  - 🇮🇹 **SDI Italiano**: `FPR12` (Fattura tra Privati / B2B / B2C), `FPA12` (Fattura PA Split Payment), `FSM10` (Fattura Semplificata)
+  - 🇪🇺 **OASIS UBL 2.1**: **Peppol BIS Billing 3.0**, **XRechnung UBL**, Fatture e Note di Credito UBL
+  - 🇪🇺 **UN/CEFACT CII**: **Factur-X / ZUGFeRD** (Tutti i profili EN 16931: Minimum, Basic, Comfort, Extended), **XRechnung CII**
+  - 🔒 **File Firmati Digitalmente**: `.xml.p7m` / `.p7m` (estrazione automatica della busta crittografica PKCS#7 / CAdES)
+  - 📑 **Multi-Body**: Lotti con più fatture nello stesso file XML
 
 ---
 

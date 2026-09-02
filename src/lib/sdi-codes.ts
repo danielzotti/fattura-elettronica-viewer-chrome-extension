@@ -18,6 +18,13 @@ export const TIPI_DOCUMENTO: Record<string, { label: string; desc: string; isCre
   TD26: { label: 'Cessione beni ammortizzabili / passaggi interni', desc: 'Vendita cespiti o passaggi tra attività separate' },
   TD27: { label: 'Fattura per autoconsumo o cessioni gratuite', desc: 'Autoconsumo o omaggi senza rivalsa' },
   TD28: { label: 'Acquisti da San Marino con IVA', desc: 'Fattura cartacea con IVA da fornitore di San Marino' },
+  // UNCL 1001 / EN 16931 Document Types (UBL & CII)
+  '380': { label: 'Fattura Commerciale (Commercial Invoice)', desc: 'Fattura standard europea EN 16931 / Peppol BIS 3.0 / Factur-X' },
+  '381': { label: 'Nota di Credito (Credit Note)', desc: 'Nota di credito europea / rettifica a favore del compratore', isCredit: true },
+  '384': { label: 'Fattura Rettificata (Corrected Invoice)', desc: 'Rettifica della fattura precedentemente emessa' },
+  '389': { label: 'Autofattura (Self-billed Invoice)', desc: 'Fattura emessa dall’acquirente per conto del fornitore' },
+  '261': { label: 'Autofattura Nota di Credito', desc: 'Nota di credito emessa dall’acquirente', isCredit: true },
+  '751': { label: 'Fattura Informativa (Commercial Invoice)', desc: 'Documento informativo di fatturazione' },
 };
 
 export const REGIMI_FISCALI: Record<string, string> = {
@@ -65,6 +72,18 @@ export const MODALITA_PAGAMENTO: Record<string, string> = {
   MP21: 'Trattenuta su somme già riscosse',
   MP22: 'Trattenuta su provvigioni',
   MP23: 'PagoPA',
+  // UNCL 4461 Payment Means (UBL & CII)
+  '10': 'Contanti (Cash)',
+  '20': 'Assegno (Cheque)',
+  '30': 'Bonifico Bancario (Credit Transfer / SEPA)',
+  '31': 'Addebito Bancario (Debit Transfer)',
+  '42': 'Versamento su conto bancario (Payment to bank account)',
+  '48': 'Carta di Credito / Debito (Credit/Debit Card)',
+  '49': 'Addebito Diretto (Direct Debit)',
+  '57': 'Accordo permanente / Ordine permanente',
+  '58': 'Bonifico SEPA (SEPA Credit Transfer)',
+  '59': 'Addebito Diretto SEPA (SEPA Direct Debit)',
+  '97': 'Compensazione tra partner commerciali (Clearing)',
 };
 
 export const CONDIZIONI_PAGAMENTO: Record<string, string> = {
@@ -98,6 +117,16 @@ export const NATURE_IVA: Record<string, string> = {
   'N6.9': 'Inversione contabile - altri casi',
   N6: 'Inversione contabile (reverse charge)',
   'N7': 'IVA assolta in altro stato UE (artt. 40 e 44 DL 331/93)',
+  // UNCL 5305 / EN 16931 Duty / Tax / Fee Categories (UBL & CII)
+  'S': 'Aliquota Standard (Standard rate)',
+  'Z': 'Aliquota Zero (Zero rated goods)',
+  'E': 'Esente da Imposta (Exempt from tax)',
+  'AE': 'Inversione Contabile (VAT Reverse Charge)',
+  'K': 'Operazione Intra-UE (Intra-Community VAT exempt)',
+  'G': 'Esente Esportazione (Free export item, tax not charged)',
+  'O': 'Fuori Campo IVA (Services outside scope of tax)',
+  'L': 'Isole Canarie / Altre giurisdizioni speciali (IGIC/IPSI)',
+  'M': 'Tassa per imposte specifiche o di produzione',
 };
 
 export const ESIGIBILITA_IVA: Record<string, { label: string; desc: string; badge: string }> = {

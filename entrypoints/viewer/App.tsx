@@ -167,7 +167,7 @@ export default function App() {
               </span>
             </div>
             <div style={{ fontSize: '11px', color: 'var(--text-muted)' }}>
-              Visualizzatore grafico &amp; esportazione PDF per Fatture SDI
+              Visualizzatore grafico &amp; esportazione PDF per Fatture SDI, UBL &amp; CII (EN 16931)
             </div>
           </div>
         </div>
@@ -386,14 +386,25 @@ export default function App() {
                   }}
                 >
                   <div>
-                    Documento generato da Fattura Elettronica Viewer • Standard SDI Agenzia delle Entrate
+                    Documento generato da Fattura Elettronica Viewer • Standard {invoice.versione.includes('UBL') || invoice.versione.includes('CII') ? 'Europeo EN 16931' : 'SDI Agenzia delle Entrate'}
                   </div>
                   <div>
-                    Formato: <code>{invoice.versione}</code> • Trasmittente:{' '}
-                    <code>
-                      {invoice.header.datiTrasmissione.idTrasmittente?.idPaese}
-                      {invoice.header.datiTrasmissione.idTrasmittente?.idCodice}
-                    </code>
+                    Formato: <code>{invoice.versione}</code>
+                    {invoice.header.datiTrasmissione.idTrasmittente ? (
+                      <>
+                        {' '}• Trasmittente:{' '}
+                        <code>
+                          {invoice.header.datiTrasmissione.idTrasmittente?.idPaese}
+                          {invoice.header.datiTrasmissione.idTrasmittente?.idCodice}
+                        </code>
+                      </>
+                    ) : (
+                      invoice.header.datiTrasmissione.codiceDestinatario && invoice.header.datiTrasmissione.codiceDestinatario !== '0000000' && (
+                        <>
+                          {' '}• Destinatario/Endpoint: <code>{invoice.header.datiTrasmissione.codiceDestinatario}</code>
+                        </>
+                      )
+                    )}
                   </div>
                 </footer>
               </div>

@@ -431,14 +431,21 @@ export function extractXmlFromP7m(content: string | ArrayBuffer): string {
   return text;
 }
 
+import { parseUblInvoice } from './ubl-parser';
+import { parseCiiInvoice } from './cii-parser';
+
 /**
  * Main parser function to parse electronic invoice XML string into structured FatturaElettronica object.
+ * Automatically supports:
+ * - Italian SDI format (FPR12, FPA12, FSM10, .p7m)
+ * - European UBL 2.1 format (Peppol BIS Billing 3.0, XRechnung UBL, EN 16931)
+ * - European UN/CEFACT CII format (Factur-X, ZUGFeRD, XRechnung CII, EN 16931)
  */
 export function parseFatturaElettronica(rawContent: string, fileName?: string): FatturaElettronica {
   const cleanXml = extractXmlFromP7m(rawContent);
 
   const parser = new DOMParser();
-  const doc = parser.parseFromString(cleanXml, 'application/xml');
+  let doc = parser.parseFromString(cleanXml, 'application/xml');
 
   const parseError = doc.querySelector('parsererror');
   if (parseError) {
@@ -446,9 +453,59 @@ export function parseFatturaElettronica(rawContent: string, fileName?: string): 
     if (docText.querySelector('parsererror')) {
       throw new Error(`Errore di parsing XML: ${parseError.textContent?.slice(0, 200)}`);
     }
+    doc = docText;
   }
 
-  // Find root element (<p:FatturaElettronica>, <FatturaElettronica>, etc.)
+  const rootEl = doc.documentElement;
+  if (!rootEl) {
+    throw new Error('Documento XML vuoto o non valido.');
+  }
+
+  const rootName = (rootEl.localName || rootEl.nodeName.split(':').pop() || '').toLowerCase();
+  const rootNs = rootEl.namespaceURI || rootEl.getAttribute('xmlns') || '';
+
+  // 1. Italian SDI format
+  if (rootName === 'fatturaelettronica' || rootNs.includes('ivaservizi.agenziaentrate.gov.it') || doc.getElementsByTagNameNS('*', 'FatturaElettronica').length > 0) {
+    return parseSdiInvoice(doc, cleanXml, fileName);
+  }
+
+  // 2. European UBL 2.1 (Invoice / CreditNote / Peppol BIS 3.0 / XRechnung)
+  if (
+    rootName === 'invoice' ||
+    rootName === 'creditnote' ||
+    rootNs.includes('specification:ubl:schema:xsd') ||
+    doc.getElementsByTagNameNS('*', 'Invoice').length > 0 ||
+    doc.getElementsByTagNameNS('*', 'CreditNote').length > 0
+  ) {
+    return parseUblInvoice(doc, cleanXml, fileName);
+  }
+
+  // 3. European UN/CEFACT CII (Factur-X / ZUGFeRD / XRechnung)
+  if (
+    rootName === 'crossindustryinvoice' ||
+    rootNs.includes('CrossIndustryInvoice') ||
+    doc.getElementsByTagNameNS('*', 'CrossIndustryInvoice').length > 0
+  ) {
+    return parseCiiInvoice(doc, cleanXml, fileName);
+  }
+
+  // Fallback scan of child tags
+  if (doc.getElementsByTagName('FatturaElettronica').length > 0) {
+    return parseSdiInvoice(doc, cleanXml, fileName);
+  }
+  if (doc.getElementsByTagName('Invoice').length > 0 || doc.getElementsByTagName('CreditNote').length > 0) {
+    return parseUblInvoice(doc, cleanXml, fileName);
+  }
+  if (doc.getElementsByTagName('CrossIndustryInvoice').length > 0) {
+    return parseCiiInvoice(doc, cleanXml, fileName);
+  }
+
+  throw new Error(
+    'Formato XML non supportato. Formati supportati: Fattura Elettronica SDI (FPR12, FPA12, FSM10), UBL 2.1 (Peppol BIS Billing 3.0, XRechnung) e UN/CEFACT CII (Factur-X, ZUGFeRD).'
+  );
+}
+
+function parseSdiInvoice(doc: Document, cleanXml: string, fileName?: string): FatturaElettronica {
   let rootEl: Element | null = doc.documentElement;
   const rootLocalName = rootEl ? (rootEl.localName || rootEl.nodeName.split(':').pop()) : null;
   if (rootLocalName !== 'FatturaElettronica') {
@@ -555,8 +612,4 @@ export function parseFatturaElettronica(rawContent: string, fileName?: string): 
     rawXml: cleanXml,
     fileName,
   };
-}
-
-function datiConvenzioneEl(datiGeneraliEl: Element | null): Element | null {
-  return datiGeneraliEl;
 }

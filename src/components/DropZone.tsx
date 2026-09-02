@@ -243,8 +243,10 @@ export const DropZone: React.FC<DropZoneProps> = ({ onLoadXml }) => {
                 flexWrap: 'wrap',
               }}
             >
-              <span className="badge badge-outline" style={{ fontSize: '11px' }}>FPR12 (B2B/B2C)</span>
-              <span className="badge badge-outline" style={{ fontSize: '11px' }}>FPA12 (Pubblica Amm.)</span>
+              <span className="badge badge-outline" style={{ fontSize: '11px' }}>SDI (FPR12/FPA12)</span>
+              <span className="badge badge-outline" style={{ fontSize: '11px' }}>🇪🇺 UBL 2.1 (Peppol)</span>
+              <span className="badge badge-outline" style={{ fontSize: '11px' }}>🇪🇺 UN/CEFACT CII (Factur-X)</span>
+              <span className="badge badge-outline" style={{ fontSize: '11px' }}>XRechnung</span>
               <span className="badge badge-outline" style={{ fontSize: '11px' }}>FSM10 (Semplificata)</span>
               <span className="badge badge-outline" style={{ fontSize: '11px' }}>PKCS#7 (.p7m)</span>
             </div>
