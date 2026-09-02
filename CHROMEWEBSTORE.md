@@ -129,10 +129,24 @@ SUPPORT & FEEDBACK
 
 ---
 
-## 🛡️ Giustificazione Permessi (Permission Justification per la Developer Dashboard)
+## 🛡️ Giustificazione Permessi & Autorizzazione Host (Developer Dashboard)
 
-| Permesso | Tipo | Giustificazione formale (in italiano / inglese) |
+### 1. Motivazione per Autorizzazione Host (`<all_urls>` / Match Pattern)
+*Campo: **"Motivazione per l'autorizzazione host"** (Host permissions justification)*
+
+> **Italiano (da copiare nel form):**  
+> `L'accesso a tutti gli URL (<all_urls>) è necessario esclusivamente per rilevare se l'utente sta visualizzando un file XML di fattura elettronica italiana in una qualsiasi pagina web (ad es. portali ERP aziendali, servizi di webmail, archivi cloud o link a fatture scaricate). Il content script verifica unicamente la presenza dei tag specifici della fattura (<FatturaElettronica>) e mostra un pulsante discreto per aprirla nel visualizzatore grafico. Nessun dato di navigazione, traffico di rete o informazione personale viene mai raccolto, tracciato o inviato all'esterno.`
+
+> **English (in case requested in English):**  
+> `Access to all URLs (<all_urls>) is required solely to detect if the user opens or views an Italian electronic invoice XML file on any website (e.g. accounting/ERP portals, webmail attachments, cloud storage, or downloaded invoice links). The content script only checks for invoice-specific XML root tags (<FatturaElettronica>) to display a discreet floating button allowing 1-click rendering in the visual viewer. No browsing history, web traffic, or personal data is ever collected, modified, or transmitted.`
+
+---
+
+### 2. Tabella Riepilogativa di Tutti i Permessi
+
+| Permesso / Pattern | Tipo | Giustificazione formale (in italiano / inglese) |
 | :--- | :--- | :--- |
+| `<all_urls>` | `content_scripts / host` | **IT**: Rileva la presenza di file XML di fatture elettroniche aperte nel browser (es. allegati webmail o portali gestionali) per mostrare l'opzione di visualizzazione grafica con 1 click. Nessun dato di navigazione viene tracciato.<br>**EN**: Detects electronic invoice XML content opened in browser tabs (e.g., ERP portals or webmail) to provide 1-click visual rendering. No browsing data is tracked. |
 | `storage` | `permissions` | **IT**: Utilizzato per memorizzare localmente le preferenze dell'utente (es. tema chiaro/scuro) e passare temporaneamente il payload della fattura dal popup alla nuova scheda del visualizzatore. Nessun dato viene inviato all'esterno.<br>**EN**: Used locally to store UI preferences (light/dark theme) and pass invoice payload from popup/context menu to the viewer tab. No data is transmitted externally. |
 | `contextMenus` | `permissions` | **IT**: Consente all'utente di fare click col tasto destro su un testo XML selezionato o su un link a un file fattura per aprirlo direttamente nel visualizzatore grafico.<br>**EN**: Enables users to right-click on selected XML text or invoice file links to open them directly in the graphic viewer tab. |
 | `tabs` | `permissions` | **IT**: Utilizzato per rilevare la presenza di file fattura aperti nella scheda corrente e aprire la vista del visualizzatore grafico in una nuova scheda.<br>**EN**: Used to detect invoice XML files opened in current browser tabs and create new tabs to render the graphic viewer interface. |
@@ -150,16 +164,22 @@ SUPPORT & FEEDBACK
 
 ---
 
-## 🎨 Asset Grafici & Screenshot Consigliati
+## 🎨 Asset Grafici & Screenshot (Tutti Generati e Pronti)
 
-| Asset | Dimensioni | Stato / Note |
-| :--- | :--- | :--- |
-| **Store Icon** | `128x128` PNG | `public/icon/128.png` |
-| **Screenshot 1** | `1280x800` o `640x400` PNG | Vista principale fattura (intestazione, cedente/cessionario, KPI totali) - Tema Chiaro |
-| **Screenshot 2** | `1280x800` o `640x400` PNG | Vista dettaglio righe, riepilogo IVA e scadenze pagamento |
-| **Screenshot 3** | `1280x800` o `640x400` PNG | Vista Dark Mode completa con allegati |
-| **Screenshot 4** | `1280x800` o `640x400` PNG | Schermata iniziale Drag & Drop / Caricamento file |
-| **Small Promo Tile** | `440x280` PNG | Banner promozionale con logo e titolo (consigliato per visibilità nello store) |
+Tutti i file sono stati generati e salvati nella cartella [`store-assets/`](file:///Users/daniel/Projects/github/fattura-elettronica-viewer-chrome-extension/store-assets):
+
+| Asset | Dimensioni | Stato | File Generato | Descrizione |
+| :--- | :--- | :--- | :--- | :--- |
+| **Store Icon** | `128x128` PNG | ✅ Pronto | [`public/icon/128.png`](file:///Users/daniel/Projects/github/fattura-elettronica-viewer-chrome-extension/public/icon/128.png) | Icona ufficiale ad alta definizione con squircle e simbolo fattura |
+| **Screenshot 1** | `1280x800` PNG | ✅ Pronto | [`store-assets/screenshot-1-overview-light.png`](file:///Users/daniel/Projects/github/fattura-elettronica-viewer-chrome-extension/store-assets/screenshot-1-overview-light.png) | Vista principale fattura B2B (FatturaPA), Cedente/Cessionario, KPI Totali (Light Mode) |
+| **Screenshot 2** | `1280x800` PNG | ✅ Pronto | [`store-assets/screenshot-2-items-table.png`](file:///Users/daniel/Projects/github/fattura-elettronica-viewer-chrome-extension/store-assets/screenshot-2-items-table.png) | Tabella beni/servizi con prezzi unitari, sconti, aliquote e riepilogo IVA |
+| **Screenshot 3** | `1280x800` PNG | ✅ Pronto | [`store-assets/screenshot-3-dark-mode.png`](file:///Users/daniel/Projects/github/fattura-elettronica-viewer-chrome-extension/store-assets/screenshot-3-dark-mode.png) | Parcella professionale in Dark Mode (Ritenuta d'acconto, cassa e bollo) |
+| **Screenshot 4** | `1280x800` PNG | ✅ Pronto | [`store-assets/screenshot-4-upload-dragdrop.png`](file:///Users/daniel/Projects/github/fattura-elettronica-viewer-chrome-extension/store-assets/screenshot-4-upload-dragdrop.png) | Schermata Drag & Drop, incolla XML e fatture di esempio precaricate |
+| **Screenshot 5** | `1280x800` PNG | ✅ Pronto | [`store-assets/screenshot-5-european-standards.png`](file:///Users/daniel/Projects/github/fattura-elettronica-viewer-chrome-extension/store-assets/screenshot-5-european-standards.png) | Supporto standard europei EN 16931 (UBL 2.1 / Peppol BIS Billing 3.0) |
+| **Small Promo Tile** | `440x280` PNG | ✅ Pronto | [`store-assets/promo-tile-440x280.png`](file:///Users/daniel/Projects/github/fattura-elettronica-viewer-chrome-extension/store-assets/promo-tile-440x280.png) | Banner promozionale piccolo per i risultati di ricerca dello store |
+| **Marquee Promo Tile**| `1400x560` PNG | ✅ Pronto | [`store-assets/marquee-promo-1400x560.png`](file:///Users/daniel/Projects/github/fattura-elettronica-viewer-chrome-extension/store-assets/marquee-promo-1400x560.png) | Banner promozionale grande per la vetrina in primo piano dello store |
+
+> Per rigenerare tutti gli asset in qualsiasi momento eseguire: `npm run screenshots:generate`
 
 ---
 

@@ -15,6 +15,7 @@
     "zip:firefox": "wxt zip -b firefox",
     "compile": "tsc --noEmit",
     "icons:generate": "node scripts/generate-icons.mjs",
+    "screenshots:generate": "node scripts/generate-screenshots.mjs",
     "postinstall": "wxt prepare"
   },
   "dependencies": {
@@ -29,6 +30,7 @@
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "@wxt-dev/module-react": "^1.1.5",
+    "puppeteer-core": "^25.9.0",
     "sharp": "^0.35.4",
     "typescript": "^5.9.3",
     "web-ext": "^10.5.0",
