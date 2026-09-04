@@ -49,7 +49,7 @@ export const AttachmentsViewer: React.FC<AttachmentsViewerProps> = ({ attachment
         <Paperclip size={16} /> Allegati ({attachments.length})
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '16px' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: '14px' }}>
         {attachments.map((att, idx) => (
           <div key={idx} className="company-card" style={{ padding: '16px', justifyContent: 'space-between' }}>
             <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>

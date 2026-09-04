@@ -7,6 +7,7 @@
   "scripts": {
     "dev": "wxt",
     "dev:firefox": "wxt -b firefox",
+    "dev:web": "vite --config vite.config.web.ts",
     "build": "wxt build",
     "build:firefox": "wxt build -b firefox",
     "build:web": "wxt build && node scripts/prepare-web-build.mjs",

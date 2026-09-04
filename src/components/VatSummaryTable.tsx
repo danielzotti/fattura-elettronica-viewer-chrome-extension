@@ -22,12 +22,12 @@ export const VatSummaryTable: React.FC<VatSummaryTableProps> = ({ summary, curre
         <table className="invoice-table">
           <thead>
             <tr>
-              <th style={{ textAlign: 'center' }}>Aliquota IVA</th>
-              <th>Natura / Esenzione</th>
-              <th style={{ textAlign: 'right' }}>Imponibile / Importo</th>
-              <th style={{ textAlign: 'right' }}>Imposta</th>
-              <th style={{ textAlign: 'center' }}>Esigibilità IVA</th>
-              <th>Riferimento Normativo</th>
+              <th style={{ textAlign: 'center', width: '13%' }}>Aliquota IVA</th>
+              <th style={{ width: '25%' }}>Natura / Esenzione</th>
+              <th style={{ textAlign: 'right', width: '18%' }}>Imponibile / Importo</th>
+              <th style={{ textAlign: 'right', width: '14%' }}>Imposta</th>
+              <th style={{ textAlign: 'center', width: '14%' }}>Esigibilità IVA</th>
+              <th style={{ width: '16%' }}>Riferimento Normativo</th>
             </tr>
           </thead>
           <tbody>

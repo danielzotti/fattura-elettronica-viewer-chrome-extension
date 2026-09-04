@@ -71,16 +71,19 @@ npm run dev
 # 3. Start development mode on Firefox
 npm run dev:firefox
 
-# 4. Build production bundle for Chrome (Manifest V3)
+# 4. Start standalone web development server with Fast Refresh
+npm run dev:web
+
+# 5. Build production bundle for Chrome (Manifest V3)
 npm run build
 
-# 5. Build production bundle for Firefox
+# 6. Build production bundle for Firefox
 npm run build:firefox
 
-# 6. Build standalone web bundle for GitHub Pages / static hosting
+# 7. Build standalone web bundle for GitHub Pages / static hosting
 npm run build:web
 
-# 7. Create ZIP bundle ready for store distribution
+# 8. Create ZIP bundle ready for store distribution
 npm run zip
 ```
 
@@ -183,16 +186,19 @@ npm run dev
 # 3. Avvia in modalità sviluppo su Firefox
 npm run dev:firefox
 
-# 4. Compila la versione di produzione per Chrome (Manifest V3)
+# 4. Avvia il server di sviluppo per la modalità web standalone
+npm run dev:web
+
+# 5. Compila la versione di produzione per Chrome (Manifest V3)
 npm run build
 
-# 5. Compila la versione di produzione per Firefox
+# 6. Compila la versione di produzione per Firefox
 npm run build:firefox
 
-# 6. Compila la versione web standalone per GitHub Pages / hosting statico
+# 7. Compila la versione web standalone per GitHub Pages / hosting statico
 npm run build:web
 
-# 7. Crea il pacchetto ZIP pronto per lo store o la distribuzione
+# 8. Crea il pacchetto ZIP pronto per lo store o la distribuzione
 npm run zip
 ```
 

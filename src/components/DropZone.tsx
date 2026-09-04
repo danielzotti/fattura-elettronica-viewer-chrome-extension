@@ -118,41 +118,43 @@ export const DropZone: React.FC<DropZoneProps> = ({ onLoadXml }) => {
       )}
 
       {/* Main Container Card */}
-      <div className="invoice-sheet" style={{ padding: '28px 32px' }}>
+      <div className="invoice-sheet">
         {/* Mode Selector Tabs */}
         <div
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '8px',
+            gap: '6px',
             padding: '4px',
             backgroundColor: 'var(--bg-card-subtle)',
             borderRadius: 'var(--radius-md)',
-            marginBottom: '24px',
+            marginBottom: '20px',
+            flexWrap: 'wrap',
           }}
         >
           <button
             type="button"
             onClick={() => setActiveMode('upload')}
             style={{
-              flex: 1,
-              padding: '10px 16px',
+              flex: '1 1 140px',
+              padding: '9px 12px',
               borderRadius: 'var(--radius-sm)',
               border: 'none',
               backgroundColor: activeMode === 'upload' ? 'var(--bg-card)' : 'transparent',
               color: activeMode === 'upload' ? 'var(--primary)' : 'var(--text-muted)',
               fontWeight: activeMode === 'upload' ? 700 : 500,
-              fontSize: '14px',
+              fontSize: '13px',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              gap: '8px',
+              gap: '6px',
               cursor: 'pointer',
               boxShadow: activeMode === 'upload' ? 'var(--shadow-sm)' : 'none',
               transition: 'all 0.15s ease',
+              minHeight: '38px',
             }}
           >
-            <Upload size={16} />
+            <Upload size={15} />
             <span>Carica File XML / P7M</span>
           </button>
 
@@ -160,24 +162,25 @@ export const DropZone: React.FC<DropZoneProps> = ({ onLoadXml }) => {
             type="button"
             onClick={() => setActiveMode('paste')}
             style={{
-              flex: 1,
-              padding: '10px 16px',
+              flex: '1 1 140px',
+              padding: '9px 12px',
               borderRadius: 'var(--radius-sm)',
               border: 'none',
               backgroundColor: activeMode === 'paste' ? 'var(--bg-card)' : 'transparent',
               color: activeMode === 'paste' ? 'var(--primary)' : 'var(--text-muted)',
               fontWeight: activeMode === 'paste' ? 700 : 500,
-              fontSize: '14px',
+              fontSize: '13px',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              gap: '8px',
+              gap: '6px',
               cursor: 'pointer',
               boxShadow: activeMode === 'paste' ? 'var(--shadow-sm)' : 'none',
               transition: 'all 0.15s ease',
+              minHeight: '38px',
             }}
           >
-            <Clipboard size={16} />
+            <Clipboard size={15} />
             <span>Incolla Codice XML</span>
           </button>
         </div>
@@ -321,7 +324,7 @@ export const DropZone: React.FC<DropZoneProps> = ({ onLoadXml }) => {
         <div className="section-title" style={{ marginBottom: '14px' }}>
           <Sparkles size={16} color="var(--primary)" /> Oppure esplora con una Fattura di Esempio:
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '14px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))', gap: '12px' }}>
           {SAMPLES.map((sample) => (
             <div
               key={sample.id}

@@ -34,41 +34,41 @@ export const InvoiceHeader: React.FC<InvoiceHeaderProps> = ({
         alignItems: 'flex-start',
         justifyContent: 'space-between',
         flexWrap: 'wrap',
-        gap: '16px',
-        marginBottom: '28px',
-        paddingBottom: '20px',
+        gap: '14px',
+        marginBottom: '22px',
+        paddingBottom: '18px',
         borderBottom: '2px solid var(--border-color)',
       }}
     >
-      <div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap', marginBottom: '8px' }}>
+      <div style={{ flex: '1 1 300px', minWidth: 0 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap', marginBottom: '8px' }}>
           <span
             className={`badge ${docInfo.isCredit ? 'badge-warning' : 'badge-primary'}`}
-            style={{ fontSize: '13px', padding: '4px 10px' }}
+            style={{ fontSize: '12px', padding: '3px 8px' }}
           >
             {tipoDoc} • {docInfo.label}
           </span>
 
-          <span className="badge badge-outline" style={{ fontSize: '12px' }}>
-            Formato: {invoice.versione}
+          <span className="badge badge-outline" style={{ fontSize: '11px' }}>
+            {invoice.versione}
           </span>
 
           {invoice.body.length > 1 && (
-            <span className="badge" style={{ backgroundColor: '#e0e7ff', color: '#3730a3' }}>
+            <span className="badge" style={{ backgroundColor: '#e0e7ff', color: '#3730a3', fontSize: '11px' }}>
               <Layers size={12} style={{ marginRight: '4px' }} />
-              Documento {activeBodyIndex + 1} di {invoice.body.length}
+              Doc {activeBodyIndex + 1}/{invoice.body.length}
             </span>
           )}
         </div>
 
-        <h1 style={{ fontSize: '26px', fontWeight: 800, color: 'var(--text-main)', margin: '4px 0' }}>
+        <h1 style={{ fontSize: 'clamp(20px, 3.5vw, 26px)', fontWeight: 800, color: 'var(--text-main)', margin: '4px 0', wordBreak: 'break-word' }}>
           Fattura N. <span style={{ color: 'var(--primary)' }}>{dgd?.numero || '-'}</span>
         </h1>
 
-        <div style={{ color: 'var(--text-muted)', fontSize: '13px' }}>
-          Data Emissione: <strong>{formatDate(dgd?.data)}</strong>
+        <div style={{ color: 'var(--text-muted)', fontSize: '12px', display: 'flex', flexWrap: 'wrap', gap: '6px', alignItems: 'center' }}>
+          <span>Data Emissione: <strong>{formatDate(dgd?.data)}</strong></span>
           {invoice.fileName && (
-            <span style={{ marginLeft: '12px', opacity: 0.8 }}>
+            <span style={{ opacity: 0.85, wordBreak: 'break-all' }}>
               • File: <code>{invoice.fileName}</code>
             </span>
           )}
@@ -76,9 +76,19 @@ export const InvoiceHeader: React.FC<InvoiceHeaderProps> = ({
       </div>
 
       {/* Action Buttons */}
-      <div className="no-print no-pdf" style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+      <div
+        className="no-print no-pdf"
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '8px',
+          flexWrap: 'wrap',
+          flex: '1 1 auto',
+          justifyContent: 'flex-start',
+        }}
+      >
         {invoice.body.length > 1 && (
-          <div style={{ display: 'flex', alignItems: 'center', gap: '4px', marginRight: '8px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '4px', marginRight: '4px', flexWrap: 'wrap' }}>
             <span style={{ fontSize: '12px', color: 'var(--text-muted)' }}>Lotto:</span>
             {invoice.body.map((_, idx) => (
               <button
@@ -86,6 +96,7 @@ export const InvoiceHeader: React.FC<InvoiceHeaderProps> = ({
                 type="button"
                 className={`btn btn-sm ${activeBodyIndex === idx ? 'btn-primary' : 'btn-secondary'}`}
                 onClick={() => onSelectBody(idx)}
+                style={{ minWidth: '32px' }}
               >
                 #{idx + 1}
               </button>
@@ -100,8 +111,8 @@ export const InvoiceHeader: React.FC<InvoiceHeaderProps> = ({
           className="btn btn-primary"
           title="Esporta fattura in PDF ad alta fedeltà A4"
         >
-          <FileDown size={16} />
-          {isExportingPdf ? 'Generazione PDF...' : 'Esporta PDF'}
+          <FileDown size={15} />
+          <span>{isExportingPdf ? 'Esportazione...' : 'Esporta PDF'}</span>
         </button>
 
         <button
@@ -110,8 +121,8 @@ export const InvoiceHeader: React.FC<InvoiceHeaderProps> = ({
           className="btn btn-secondary"
           title="Stampa documento con il browser"
         >
-          <Printer size={16} />
-          Stampa
+          <Printer size={15} />
+          <span>Stampa</span>
         </button>
 
         <button
@@ -120,8 +131,8 @@ export const InvoiceHeader: React.FC<InvoiceHeaderProps> = ({
           className="btn btn-secondary"
           title="Carica un'altra fattura elettronica"
         >
-          <RefreshCw size={16} />
-          Carica Altra
+          <RefreshCw size={15} />
+          <span>Altra</span>
         </button>
       </div>
     </div>

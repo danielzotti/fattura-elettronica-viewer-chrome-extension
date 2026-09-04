@@ -98,7 +98,7 @@ export const CompanyCard: React.FC<CompanyCardProps> = ({ type, data, trasmissio
           <span className="field-label" style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
             <MapPin size={13} /> Sede Legale:
           </span>
-          <span className="field-value" style={{ textAlign: 'right' }}>
+          <span className="field-value">
             {fullAddress}
           </span>
         </div>

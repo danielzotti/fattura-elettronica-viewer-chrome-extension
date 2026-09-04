@@ -18,23 +18,23 @@ export const PaymentDetails: React.FC<PaymentDetailsProps> = ({ payments, curren
         <CreditCard size={16} /> Modalità e Dati di Pagamento
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '16px', marginBottom: '24px' }}>
+      <div className="payment-grid">
         {payments.map((pGroup, gIdx) => (
           <div key={gIdx} style={{ display: 'contents' }}>
             {pGroup.dettagliPagamento.map((item, dIdx) => (
-              <div key={dIdx} className="company-card" style={{ padding: '18px' }}>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
+              <div key={dIdx} className="company-card payment-card">
+                <div className="payment-card-header">
                   <span className="badge badge-primary">
                     {getModalitaPagamentoDesc(item.modalitaPagamento)}
                   </span>
-                  <span style={{ fontSize: '12px', color: 'var(--text-muted)' }}>
+                  <span className="payment-condition">
                     {getCondizioniPagamentoDesc(pGroup.condizioniPagamento)}
                   </span>
                 </div>
 
                 <div className="field-group">
                   <div className="field-row">
-                    <span className="field-label" style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                    <span className="field-label">
                       <Calendar size={13} /> Scadenza:
                     </span>
                     <span className="field-value" style={{ color: 'var(--text-main)' }}>
@@ -51,7 +51,7 @@ export const PaymentDetails: React.FC<PaymentDetailsProps> = ({ payments, curren
 
                   {item.beneficiario && (
                     <div className="field-row">
-                      <span className="field-label" style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                      <span className="field-label">
                         <UserCheck size={13} /> Beneficiario:
                       </span>
                       <span className="field-value">{item.beneficiario}</span>
@@ -60,7 +60,7 @@ export const PaymentDetails: React.FC<PaymentDetailsProps> = ({ payments, curren
 
                   {item.istitutoFinanziario && (
                     <div className="field-row">
-                      <span className="field-label" style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                      <span className="field-label">
                         <Landmark size={13} /> Banca / Istituto:
                       </span>
                       <span className="field-value">{item.istitutoFinanziario}</span>
@@ -71,7 +71,7 @@ export const PaymentDetails: React.FC<PaymentDetailsProps> = ({ payments, curren
                     <div className="field-row">
                       <span className="field-label">IBAN:</span>
                       <span className="field-value">
-                        <code style={{ fontSize: '12px', letterSpacing: '0.02em' }}>{item.codiceIBAN}</code>
+                        <code style={{ fontSize: '12px', letterSpacing: '0.02em', wordBreak: 'break-all' }}>{item.codiceIBAN}</code>
                         <CopyButton text={item.codiceIBAN} title="Copia IBAN" />
                       </span>
                     </div>

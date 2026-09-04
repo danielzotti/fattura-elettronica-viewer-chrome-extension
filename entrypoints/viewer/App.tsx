@@ -141,38 +141,28 @@ export default function App() {
     <div className="app-container">
       {/* Top sticky Navigation */}
       <header className="top-nav">
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+        <div className="top-nav-brand">
           <div
-            style={{
-              width: '36px',
-              height: '36px',
-              borderRadius: '8px',
-              backgroundColor: 'var(--primary)',
-              color: '#ffffff',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              cursor: invoice ? 'pointer' : 'default',
-            }}
+            className={`top-nav-logo ${invoice ? 'clickable' : ''}`}
             onClick={() => invoice && setInvoice(null)}
             title={invoice ? 'Torna alla schermata di caricamento' : undefined}
           >
             <Receipt size={20} />
           </div>
-          <div>
-            <div style={{ fontWeight: 700, fontSize: '15px', color: 'var(--text-main)', display: 'flex', alignItems: 'center', gap: '6px' }}>
-              Fattura Elettronica Viewer
+          <div className="top-nav-title-group">
+            <div className="top-nav-title">
+              Fattura Elettronica
               <span className="badge badge-primary" style={{ fontSize: '10px', padding: '2px 6px' }}>
                 WXT MV3
               </span>
             </div>
-            <div style={{ fontSize: '11px', color: 'var(--text-muted)' }}>
+            <div className="top-nav-subtitle">
               Visualizzatore grafico &amp; esportazione PDF per Fatture SDI, UBL &amp; CII (EN 16931)
             </div>
           </div>
         </div>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+        <div className="top-nav-actions">
           {invoice && (
             <button
               type="button"
@@ -181,7 +171,7 @@ export default function App() {
               title="Carica un'altra fattura elettronica"
             >
               <FileUp size={14} />
-              <span>Nuovo Caricamento</span>
+              <span>Nuovo</span>
             </button>
           )}
 
@@ -191,9 +181,10 @@ export default function App() {
             onClick={toggleTheme}
             className="btn btn-secondary btn-sm"
             title={theme === 'light' ? 'Attiva Dark Mode' : 'Attiva Light Mode'}
+            aria-label="Cambia tema"
           >
             {theme === 'light' ? <Moon size={14} /> : <Sun size={14} />}
-            <span>{theme === 'light' ? 'Tema Scuro' : 'Tema Chiaro'}</span>
+            <span>{theme === 'light' ? 'Scuro' : 'Chiaro'}</span>
           </button>
         </div>
       </header>

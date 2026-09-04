@@ -48,21 +48,93 @@ export async function exportInvoiceToPdf(
           clonedDoc.body.setAttribute('data-theme', 'light');
           clonedDoc.body.style.backgroundColor = '#ffffff';
           clonedDoc.body.style.color = '#0f172a';
+          clonedDoc.body.style.width = '1200px';
         }
+
+        // Force desktop A4 styling for PDF capture
+        const a4Style = clonedDoc.createElement('style');
+        a4Style.id = 'pdf-a4-enforced-styles';
+        a4Style.textContent = `
+          .no-print, .no-pdf, button, .btn, .btn-icon, input, textarea, .tabs-nav, .lines-cards-container {
+            display: none !important;
+            visibility: hidden !important;
+          }
+          .hidden-on-screen-cards, .table-wrapper {
+            display: block !important;
+            overflow: hidden !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            box-sizing: border-box !important;
+          }
+          .invoice-table {
+            display: table !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            table-layout: fixed !important;
+            box-sizing: border-box !important;
+          }
+          .grid-2 {
+            display: grid !important;
+            grid-template-columns: 1fr 1fr !important;
+            gap: 16px !important;
+            margin-bottom: 20px !important;
+          }
+          .kpi-banner {
+            display: grid !important;
+            grid-template-columns: repeat(3, 1fr) !important;
+            gap: 12px !important;
+            margin: 16px 0 !important;
+          }
+          .kpi-card.highlight {
+            grid-column: span 1 !important;
+            background: #eff6ff !important;
+            border-color: #bfdbfe !important;
+          }
+          .kpi-card.highlight .kpi-value {
+            color: #1d4ed8 !important;
+          }
+          .payment-grid {
+            display: grid !important;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+            gap: 14px !important;
+            margin-bottom: 20px !important;
+          }
+          .payment-card-header {
+            display: flex !important;
+            flex-direction: row !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+            gap: 8px !important;
+          }
+          .payment-condition {
+            font-size: 12px !important;
+          }
+          .field-row {
+            display: flex !important;
+            flex-direction: row !important;
+            align-items: flex-start !important;
+            justify-content: space-between !important;
+            gap: 8px !important;
+          }
+          .field-value {
+            text-align: right !important;
+            justify-content: flex-end !important;
+            width: auto !important;
+          }
+          .company-card, .payment-card, .kpi-card {
+            background-color: #f8fafc !important;
+            border: 1px solid #e2e8f0 !important;
+            color: #0f172a !important;
+          }
+        `;
+        clonedDoc.head.appendChild(a4Style);
 
         const clonedEl = clonedDoc.getElementById(containerElement.id);
         if (clonedEl) {
-          // Hide all action buttons, copy icons, search inputs, and no-print elements
-          const elementsToHide = clonedEl.querySelectorAll<HTMLElement>(
-            '.no-print, .no-pdf, button, .btn, .btn-icon, input, textarea, .tabs-nav'
-          );
-          elementsToHide.forEach((el) => {
-            el.style.setProperty('display', 'none', 'important');
-          });
-
           // Layout adjustments for clean A4 paper rendering
           clonedEl.style.width = '1000px';
           clonedEl.style.maxWidth = '1000px';
+          clonedEl.style.minWidth = '1000px';
           clonedEl.style.margin = '0 auto';
           clonedEl.style.padding = '24px';
           clonedEl.style.boxShadow = 'none';
