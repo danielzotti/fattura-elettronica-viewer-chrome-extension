@@ -3,6 +3,24 @@ import { defineConfig } from 'wxt';
 // See https://wxt.dev/api/config.html
 export default defineConfig({
   modules: ['@wxt-dev/module-react'],
+  vite: () => ({
+    plugins: [
+      {
+        name: 'remove-pdfobject-cdn',
+        transform(code, id) {
+          if (id.includes('jspdf') || code.includes('https://cdnjs.cloudflare.com/ajax/libs/pdfobject')) {
+            return {
+              code: code.replace(
+                /https:\/\/cdnjs\.cloudflare\.com\/ajax\/libs\/pdfobject\/2\.1\.1\/pdfobject(\.min)?\.js/g,
+                ''
+              ),
+              map: null,
+            };
+          }
+        },
+      },
+    ],
+  }),
   manifest: {
     name: 'Fattura Elettronica Viewer & PDF',
     description:
