@@ -8,7 +8,7 @@ export default defineConfig({
     description:
       'Visualizza e trasforma fatture elettroniche XML e P7M in documenti grafici ed esporta in PDF A4. 100% privato e offline.',
     version: '1.0.0',
-    permissions: ['storage', 'contextMenus', 'tabs'],
+    permissions: ['storage', 'contextMenus'],
     action: {
       default_title: 'Fattura Elettronica Viewer',
       default_icon: {

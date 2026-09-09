@@ -41,7 +41,6 @@ L'estensione richiede alcuni permessi tecnici strettamente indispensabili per il
 | :--- | :--- | :--- |
 | **`storage`** | Salva in locale la preferenza del tema (chiaro/scuro) e gestisce il passaggio temporaneo del payload della fattura alla scheda del visualizzatore. | Dati salvati unicamente sul dispositivo dell'utente. |
 | **`contextMenus`** | Aggiunge la voce nel menu del tasto destro per consentire l'apertura rapida di link o testo XML selezionato. | Nessun dato tracciato o memorizzato. |
-| **`tabs`** | Consente all'estensione di aprire la schermata di visualizzazione grafica in una nuova scheda del browser. | Nessun tracciamento della cronologia o delle attività di navigazione. |
 | **Accesso agli URL (`<all_urls>`)** | Rileva se nella scheda corrente è aperto o visualizzato un file XML di fattura elettronica (es. allegato webmail o portale ERP) per mostrare il pulsante di apertura grafica rapida. | Nessun dato di navigazione, cookie o richiesta di rete viene letto, memorizzato o inviato. |
 
 ---
@@ -107,7 +106,6 @@ The extension requests specific browser permissions strictly required for its co
 | :--- | :--- | :--- |
 | **`storage`** | Stores UI theme preference (light/dark) and temporarily transfers invoice payloads to the viewer tab. | Kept strictly on the user's local device. |
 | **`contextMenus`** | Adds a right-click menu item to open selected XML text or invoice file links directly in the viewer. | No data collected or stored. |
-| **`tabs`** | Allows the extension to open the graphic viewer in a new browser tab. | No browsing history or activity is monitored. |
 | **Host Permissions (`<all_urls>`)** | Detects if an electronic invoice XML document is opened in the current browser tab (e.g., ERP portal or webmail attachment) to display a quick-open button. | No network traffic, page content, or browsing data is tracked or transmitted. |
 
 ---

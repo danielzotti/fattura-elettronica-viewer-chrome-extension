@@ -65,7 +65,6 @@ PERMESSI RICHIESTI
 
 • "storage": necessario esclusivamente per salvare in locale le preferenze dell'interfaccia (es. tema Chiaro/Scuro) e trasferire temporaneamente la fattura dal menu al visualizzatore.
 • "contextMenus": consente di aprire file XML o testi selezionati tramite il menu del tasto destro.
-• "tabs": consente di aprire la schermata del visualizzatore grafico in una nuova scheda del browser.
 
 
 SUPPORTO & FEEDBACK
@@ -118,7 +117,6 @@ PERMISSIONS
 
 • "storage": used solely to store local UI preferences (Dark/Light mode) and transfer invoice data to the viewer tab.
 • "contextMenus": allows opening XML invoice files or selected text via right-click context menu.
-• "tabs": allows opening the viewer interface in a new browser tab.
 
 
 SUPPORT & FEEDBACK
@@ -149,7 +147,6 @@ SUPPORT & FEEDBACK
 | `<all_urls>` | `content_scripts / host` | **IT**: Rileva la presenza di file XML di fatture elettroniche aperte nel browser (es. allegati webmail o portali gestionali) per mostrare l'opzione di visualizzazione grafica con 1 click. Nessun dato di navigazione viene tracciato.<br>**EN**: Detects electronic invoice XML content opened in browser tabs (e.g., ERP portals or webmail) to provide 1-click visual rendering. No browsing data is tracked. |
 | `storage` | `permissions` | **IT**: Utilizzato per memorizzare localmente le preferenze dell'utente (es. tema chiaro/scuro) e passare temporaneamente il payload della fattura dal popup alla nuova scheda del visualizzatore. Nessun dato viene inviato all'esterno.<br>**EN**: Used locally to store UI preferences (light/dark theme) and pass invoice payload from popup/context menu to the viewer tab. No data is transmitted externally. |
 | `contextMenus` | `permissions` | **IT**: Consente all'utente di fare click col tasto destro su un testo XML selezionato o su un link a un file fattura per aprirlo direttamente nel visualizzatore grafico.<br>**EN**: Enables users to right-click on selected XML text or invoice file links to open them directly in the graphic viewer tab. |
-| `tabs` | `permissions` | **IT**: Utilizzato per rilevare la presenza di file fattura aperti nella scheda corrente e aprire la vista del visualizzatore grafico in una nuova scheda.<br>**EN**: Used to detect invoice XML files opened in current browser tabs and create new tabs to render the graphic viewer interface. |
 
 ---
 
